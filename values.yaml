@@ -1,0 +1,40 @@
+#-------------------------------------------------------------------------------
+# @license
+# Copyright SOAJS All Rights Reserved.
+#
+# Use of this source code is governed by an Apache license that can be
+# found in the LICENSE file at the root of this repository
+#-------------------------------------------------------------------------------
+
+global:
+  soajsConfig:
+    domain: "soajs.io"
+    apiPrefix: "dashboard-api"
+    sitePrefix: "dashboard"
+    kubernetes:
+      ipAddr: "kubernetes.docker.internal"
+      port: 6443
+      token: "eyJhbGciOiJSUzI1NiIsImtpZCI6InJ0bG1LZUZ3dXItdkRKeGtPenZfT0MwZXQwbTJDN0QyM0lsSUdrNklwalEifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJkZWZhdWx0Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6ImRlZmF1bHQtdG9rZW4td2p0aDgiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZGVmYXVsdCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6ImI0ZDVlMjM0LWVkMWEtNDE5OC1iNWJiLTYyNDUyMjI5NTcyMyIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDpkZWZhdWx0OmRlZmF1bHQifQ.OKg-EK7cZtPVfOhvhxZhsq9pQUN1bZpWFUGbb50Ph7eMp5YqLsUrydRCp1rJ23Ns3fTsc4jcQlxRCV7rkzjryv4weV5eDF-KZoJ8aRa0HVF67GH3hC_xYpgHmkGzVgkK_KohO1xhewzy0b5OVEWjzrD-HCVQ9cNBBI88uWcVVtoLAFXomDpAwvUi9LmbDFBfnxTUgYVa4aOf7bfhgKD47gEKWxPC0Uzgfy8S9ruEmf0aQ2wgDZhrPpnvrco93334mGiGIQIlArrNiUVDlieBfKMvlCzil0ZtFWqT8Pg3CWGdccxhAS39AkvHUiW2HvpSVkT8E1yU-ukUATjXVBr6vg"
+    user:
+      username: "owner"
+      password: "password"
+      hashedPassword: "$2a$10$S7hAJn1aJC6iYucgZgFY7.zs3gt5kzYRy1Favyld/Sj70yFMZPi2G"
+      email: "antoine@soajs.org"
+
+# Do not change the below unless you know what you are doing
+    mongo:
+      servers:
+      - host: "dashboard-soajsdata-service"
+        port: 27017
+      URLParam:
+        useUnifiedTopology: true
+    tenantExternalKey: "fe20ded5fdb8502b06f6a85dd1ba9f6cad33b705e3765aece1521c284fe72674078bd0072ed6c9eda15c52f4fba0f59b27c58d86dda431724bb1548fbd0a22a28c7cac330992dfd9e198a736ab479a24c4050f2b778007c9ab95ae41b0da3f6a"
+    tenantInternalKey: "a139786a6e6d18e48b4987e83789430b"
+    keyPassword: "5cef8f4a-a66f-11ea-b652-5fd9e891d604"
+  soajsNginxHttpPort: 30080
+  soajsNginxHttpsPort: 30443
+  soajsDataExternalPort: 31017
+  soajsDataPvcStorage: 2Gi
+  namespace: soajs
+  TS: "1599143397042"
+  soajsController: dashboard-controller-v1

@@ -1,0 +1,25 @@
+#-------------------------------------------------------------------------------
+# @license
+# Copyright SOAJS All Rights Reserved.
+#
+# Use of this source code is governed by an Apache license that can be
+# found in the LICENSE file at the root of this repository
+#-------------------------------------------------------------------------------
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+settings:
+  image: soajsorg/marketplace
+  label: dashboard-marketplace
+  version: 1
+  catalogId: 5edf6c1136c77052b0a5e1f2
+  item:
+    name: marketplace
+    group: Console
+  mPort: 5007
+  sPort: 4007

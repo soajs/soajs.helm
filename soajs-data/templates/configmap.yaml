@@ -1,0 +1,24 @@
+#-------------------------------------------------------------------------------
+# @license
+# Copyright SOAJS All Rights Reserved.
+#
+# Use of this source code is governed by an Apache license that can be
+# found in the LICENSE file at the root of this repository
+#-------------------------------------------------------------------------------
+
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: soajsdata-initscript-configmap
+  namespace: {{ .Values.global.namespace }}
+data:
+{{ tpl (.Files.Glob "resources/initial-data/*.sh").AsConfig . | indent 2 }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: soajs-initialdata-configmap
+  namespace: {{ .Values.global.namespace }}
+data:
+{{ tpl (.Files.Glob "resources/initial-data/data/**.json").AsConfig . | indent 2 }}

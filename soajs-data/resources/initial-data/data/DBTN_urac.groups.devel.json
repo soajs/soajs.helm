@@ -1,0 +1,18 @@
+{
+  "_id": {"$oid":"5f6368752dd5ac5080dc7d75"},
+  "locked": true,
+  "code": "devel",
+  "name": "Developer Group",
+  "description": "this is the developer group",
+  "config": {
+    "allowedPackages": {
+      "DSBRD": [
+        "DSBRD_DEVEL"
+      ]
+    }
+  },
+  "tenant": {
+    "id": "5c0e74ba9acc3c5a84a51259",
+    "code": "DBTN"
+  }
+}

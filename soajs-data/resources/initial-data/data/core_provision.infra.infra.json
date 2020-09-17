@@ -1,0 +1,18 @@
+{
+  "_id": {"$oid":"5ee2c197bbedb89caa406d40"},
+  "type": "kubernetes",
+  "label": "Kubernetes Remote",
+  "description": "This cluster was added automatically by remote installer and used by soajs console",
+  "configuration": {
+    "type": "secret",
+    "url": "{{ .Values.global.soajsConfig.kubernetes.ipAddr }}",
+    "port": "{{ .Values.global.soajsConfig.kubernetes.port }}",
+    "token": "{{ .Values.global.soajsConfig.kubernetes.token }}"
+  },
+  "deployments": [
+    {
+      "env": "dashboard",
+      "namespace": "soajs"
+    }
+  ]
+}

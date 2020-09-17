@@ -1,0 +1,100 @@
+{
+  "_id": {"$oid":"55128442e603d7e01ab1688c"},
+  "code": "DASHBOARD",
+  "domain": "{{ .Values.global.soajsConfig.domain }}",
+  "sitePrefix": "{{ .Values.global.soajsConfig.sitePrefix }}",
+  "apiPrefix": "{{ .Values.global.soajsConfig.apiPrefix }}",
+  "locked": true,
+  "port": 80,
+  "protocol": "http",
+  "deployer": {
+    "type": "container",
+    "selected": "container.kubernetes",
+    "container": {
+      "kubernetes": {
+        "id": "5ee2c197bbedb89caa406d40",
+        "namespace": "{{ .Release.Namespace }}"
+      }
+    }
+  },
+  "description": "SOAJS Console Environment",
+  "dbs": {
+    "config": {
+      "prefix": ""
+    },
+    "databases": {
+      "urac": {
+        "cluster": "dash_cluster",
+        "tenantSpecific": true
+      }
+    }
+  },
+  "services": {
+    "controller": {
+      "authorization": true,
+      "requestTimeout": 30,
+      "requestTimeoutRenewal": 0
+    },
+    "config": {
+      "awareness": {
+        "cacheTTL": 3600000,
+        "healthCheckInterval": 5000,
+        "autoRelaodRegistry": 86400000,
+        "maxLogCount": 5,
+        "autoRegisterService": true
+      },
+      "key": {
+        "algorithm": "aes256",
+        "password": "{{ .Values.global.soajsConfig.keyPassword }}"
+      },
+      "logger": {
+        "src": false,
+        "level": "error",
+        "formatter": {
+          "levelInString": false,
+          "outputMode": "short"
+        }
+      },
+      "cors": {
+        "enabled": true,
+        "origin": "*",
+        "credentials": "true",
+        "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+        "headers": "key,soajsauth,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization,__env",
+        "maxage": 1728000
+      },
+      "oauth": {
+        "grants": [
+          "password",
+          "refresh_token"
+        ],
+        "debug": false,
+        "getUserFromToken": true,
+        "accessTokenLifetime": 7200,
+        "refreshTokenLifetime": 1209600
+      },
+      "ports": {
+        "controller": 4000,
+        "maintenanceInc": 1000,
+        "randomInc": 100
+      },
+      "cookie": {
+        "secret": "{{ uuidv4 }}"
+      },
+      "session": {
+        "name": "soajsID",
+        "secret": "{{ uuidv4 }}",
+        "cookie": {
+          "path": "/",
+          "httpOnly": true,
+          "secure": false,
+          "maxAge": null
+        },
+        "resave": false,
+        "saveUninitialized": false,
+        "rolling": false,
+        "unset": "keep"
+      }
+    }
+  }
+}

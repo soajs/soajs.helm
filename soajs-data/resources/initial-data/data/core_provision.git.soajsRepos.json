@@ -1,0 +1,14 @@
+{
+  "_id": {"$oid":"56f1189430f153a571b9c8be"},
+  "owner": "soajs",
+  "accountType": "organization",
+  "access": "public",
+  "provider": "github",
+  "domain": "github.com",
+  "label": "SOAJS Open Source",
+  "type": "account",
+  "metadata": {
+    "organizations": []
+  },
+  "GID": 10834185
+}

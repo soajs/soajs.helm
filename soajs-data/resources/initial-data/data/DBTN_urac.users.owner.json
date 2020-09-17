@@ -1,0 +1,23 @@
+{
+  "_id": {"$oid":"5f6368753e13c0ef1a25795c"},
+  "locked": true,
+  "username": "{{ .Values.global.soajsConfig.user.username }}",
+  "password": "{{ .Values.global.soajsConfig.user.hashedPassword }}",
+  "firstName": "owner",
+  "lastName": "owner",
+  "email": "{{ .Values.global.soajsConfig.user.email }}",
+  "ts": "{{ now | unixEpoch }}",
+  "status": "active",
+  "profile": {},
+  "groups": [
+    "owner"
+  ],
+  "config": {
+    "packages": {},
+    "keys": {}
+  },
+  "tenant": {
+    "id": "5c0e74ba9acc3c5a84a51259",
+    "code": "DBTN"
+  }
+}

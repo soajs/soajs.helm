@@ -1,0 +1,25 @@
+#-------------------------------------------------------------------------------
+# @license
+# Copyright SOAJS All Rights Reserved.
+#
+# Use of this source code is governed by an Apache license that can be
+# found in the LICENSE file at the root of this repository
+#-------------------------------------------------------------------------------
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+settings:
+  image: soajsorg/repositories
+  label: dashboard-repositories
+  version: 1
+  catalogId: 5edf6c1836c77052b0a5e1f3
+  item:
+    name: repositories
+    group: Console
+  mPort: 5006
+  sPort: 4006

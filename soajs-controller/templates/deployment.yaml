@@ -1,0 +1,96 @@
+#-------------------------------------------------------------------------------
+# @license
+# Copyright SOAJS All Rights Reserved.
+#
+# Use of this source code is governed by an Apache license that can be
+# found in the LICENSE file at the root of this repository
+#-------------------------------------------------------------------------------
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Values.settings.label }}-v{{ .Values.settings.version }}"
+  namespace: "{{ .Values.global.namespace }}"
+  labels:
+    service.image.ts: "{{ .Values.global.TS }}"
+    soajs.catalog.id: "{{ .Values.settings.catalogId }}"
+    soajs.catalog.v: "1"
+    soajs.content: "true"
+    soajs.env.code: "dashboard"
+    soajs.service.group: "{{ .Values.settings.item.group }}"
+    soajs.service.label: "{{ .Values.settings.label }}-v{{ .Values.settings.version }}"
+    soajs.service.mode: "deployment"
+    soajs.service.name: "{{ .Values.settings.item.name }}"
+    soajs.service.subtype: "soajs"
+    soajs.service.type: "service"
+    soajs.service.version: "{{ .Values.settings.version }}"
+spec:
+  replicas: 1
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      soajs.service.label: "{{ .Values.settings.label }}-v{{ .Values.settings.version }}"
+
+  template:
+    metadata:
+      name: "{{ .Values.settings.label }}-v{{ .Values.settings.version }}"
+      labels:
+        service.image.ts: "{{ .Values.global.TS }}"
+        soajs.catalog.id: "{{ .Values.settings.catalogId }}"
+        soajs.catalog.v: "1"
+        soajs.content: "true"
+        soajs.env.code: "dashboard"
+        soajs.service.group: "{{ .Values.settings.item.group }}"
+        soajs.service.label: "{{ .Values.settings.label }}-v{{ .Values.settings.version }}"
+        soajs.service.mode: "deployment"
+        soajs.service.name: "{{ .Values.settings.item.name }}"
+        soajs.service.subtype: "soajs"
+        soajs.service.type: "service"
+        soajs.service.version: "{{ .Values.settings.version }}"
+    spec:
+      containers:
+      - image: "{{ .Values.settings.image }}:{{ .Chart.AppVersion }}"
+        imagePullPolicy: IfNotPresent
+        name: soajs-{{ .Values.settings.item.name }}-container
+        workingDir: /opt/soajs/soajs.{{ .Values.settings.item.name }}/
+        command:
+        - bash
+        args:
+        - -c
+        - "node ."
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
+        ports:
+        - containerPort: {{ .Values.settings.sPort }}
+          name: service
+        - containerPort: {{ .Values.settings.mPort }}
+          name: maintenance
+        env:
+        - name: SOAJS_ENV
+          value: dashboard
+        - name: SOAJS_PROFILE
+          value: /opt/soajs/profile/soajsprofile
+        - name: SOAJS_DEPLOY_HA
+          value: kubernetes
+        - name: SOAJS_MONGO_CON_KEEPALIVE
+          value: "true"
+        - name: SOAJS_BCRYPT
+          value: "true"
+        volumeMounts:
+        - mountPath: /opt/soajs/profile
+          name: soajsprofile
+        readinessProbe:
+          httpGet:
+            path: /heartbeat
+            port: maintenance
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 2
+          failureThreshold: 3
+      volumes:
+      - name: soajsprofile
+        secret:
+          defaultMode: 420
+          secretName: soajsprofile

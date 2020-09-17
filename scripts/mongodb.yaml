@@ -1,0 +1,10 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: dashboard-soajsdata-service
+  namespace: dev
+spec:
+  type: ExternalName
+  externalName: dashboard-soajsdata-service.soajs.svc.cluster.local
+  ports:
+  - port: 27017

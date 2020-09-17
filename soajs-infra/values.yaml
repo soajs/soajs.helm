@@ -1,0 +1,25 @@
+#-------------------------------------------------------------------------------
+# @license
+# Copyright SOAJS All Rights Reserved.
+#
+# Use of this source code is governed by an Apache license that can be
+# found in the LICENSE file at the root of this repository
+#-------------------------------------------------------------------------------
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+settings:
+  image: soajsorg/infra
+  label: dashboard-infra
+  version: 1
+  catalogId: 5edf69dc36c77052b0a5e1f0
+  item:
+    name: infra
+    group: Console
+  mPort: 5008
+  sPort: 4008
