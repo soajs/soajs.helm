@@ -1,6 +1,6 @@
 # soajs.helm
 
-SOAJS helm is to deploy SOAJS using help chart
+SOAJS helm is to deploy SOAJS using Helm Chart
 
 ### Complete Documentation
 More information is available on SOAJS website under the section for [HELM](https://soajsorg.atlassian.net/wiki/x/MQBhaw).
