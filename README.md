@@ -26,7 +26,7 @@ To install soajs gateway, you  must wait for soajsdata to be ready
 ```
 To install soajs ui, you  must wait for gateway to be ready
 ```bash
- helm install -name soajs-nginx --namespace soajs ./soajs-nginx/ -f ./values.yaml
+ helm install -name soajs-ui --namespace soajs ./soajs-ui/ -f ./values.yaml
 ```
 To install soajs oauth, you  must wait for gateway to be ready 
 ```bash
