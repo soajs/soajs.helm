@@ -1,0 +1,12 @@
+{
+  "_id": {
+    "$oid": "5f63a29eab0be7754f3b6c00"
+  },
+  "type": "installer",
+  "releaseInfo": {
+    "name": "stingray",
+    "patch": "2",
+    "description": "This has been installed with soajs helm charts.",
+    "label": "Stingray"
+  }
+}

@@ -17,7 +17,7 @@ dataStorage: 2Gi
 settings:
   image: mongo:4.2.7
   label: dashboard-soajsdata
-  catalogId: 5df3ec10fa3912534948f000
+  catalogId: 5df3ec10fa3912534948f003
   resourceId: 5bed928f29f0041bf64bf989
   item:
     name: soajsdata
