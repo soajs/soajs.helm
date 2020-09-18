@@ -5,12 +5,24 @@
   "type": "service",
   "name": "multitenant",
   "metadata": {
-    "tags": ["productization", "packaging"],
+    "tags": [
+      "productization",
+      "packaging"
+    ],
     "attributes": {
-      "multitenant": ["main tenant", "sub tenant"],
-      "acl": ["by environment", "by tenant", "by key"]
+      "multitenant": [
+        "main tenant",
+        "sub tenant"
+      ],
+      "acl": [
+        "by environment",
+        "by tenant",
+        "by key"
+      ]
     },
-    "program": ["soajs"]
+    "program": [
+      "soajs"
+    ]
   },
   "configuration": {
     "group": "Console",
@@ -23,7 +35,7 @@
     {
       "version": "1",
       "extKeyRequired": true,
-      "urac": false,
+      "urac": true,
       "urac_Profile": false,
       "urac_ACL": false,
       "urac_Config": false,
@@ -34,6 +46,10 @@
       "interConnect": [
         {
           "name": "marketplace",
+          "version": "1"
+        },
+        {
+          "name": "console",
           "version": "1"
         }
       ],
@@ -82,10 +98,23 @@
           "groupMain": true
         },
         {
+          "l": "Get console product",
+          "v": "/product/console",
+          "m": "get",
+          "group": "Console product",
+          "groupMain": true
+        },
+        {
           "l": "List product packages",
           "v": "/product/packages",
           "m": "get",
           "group": "Product"
+        },
+        {
+          "l": "List console product packages",
+          "v": "/product/console/packages",
+          "m": "get",
+          "group": "Console product"
         },
         {
           "l": "Get product package",
@@ -94,18 +123,114 @@
           "group": "Product"
         },
         {
-          "l": "Get product",
+          "l": "Get console product package",
+          "v": "/product/console/package",
+          "m": "get",
+          "group": "Console product"
+        },
+        {
+          "l": "Get product ACL in raw form",
+          "v": "/product/acl/scope/raw",
+          "m": "get",
+          "group": "Product",
+          "groupMain": true
+        },
+        {
+          "l": "Get console product Acl in raw form",
+          "v": "/product/console/acl/scope/raw",
+          "m": "get",
+          "group": "Console product",
+          "groupMain": true
+        },
+        {
+          "l": "Get product package ACL in raw form",
+          "v": "/product/package/acl/raw",
+          "m": "get",
+          "group": "Product",
+          "groupMain": true
+        },
+        {
+          "l": "Get console product package ACL in raw form",
+          "v": "/product/console/package/acl/raw",
+          "m": "get",
+          "group": "Console product",
+          "groupMain": true
+        },
+        {
+          "l": "Get product Acl in UI form",
           "v": "/product/acl/ui",
           "m": "get",
           "group": "Product",
           "groupMain": true
         },
         {
-          "l": "Get product",
+          "l": "Get console product Acl in UI form",
+          "v": "/product/console/acl/ui",
+          "m": "get",
+          "group": "Console product",
+          "groupMain": true
+        },
+        {
+          "l": "Get product package ACL in UI form",
           "v": "/product/package/acl/ui",
           "m": "get",
           "group": "Product",
           "groupMain": true
+        },
+        {
+          "l": "Get console product package ACL in UI form",
+          "v": "/product/console/package/acl/ui",
+          "m": "get",
+          "group": "Console product",
+          "groupMain": true
+        },
+        {
+          "l": "Get the ACL of a specific service in the product package",
+          "v": "/product/package/acl/service",
+          "m": "get",
+          "group": "Product"
+        },
+        {
+          "l": "Get the ACL of a specific api in the product package",
+          "v": "/product/package/acl/api",
+          "m": "get",
+          "group": "Product"
+        },
+        {
+          "l": "Get the ACL of a specific service in the product scope",
+          "v": "/product/acl/scope/service",
+          "m": "get",
+          "group": "Product"
+        },
+        {
+          "l": "Get the ACL of a specific api in the product scope",
+          "v": "/product/acl/scope/api",
+          "m": "get",
+          "group": "Product"
+        },
+        {
+          "l": "Get the ACL of a specific service in the product package",
+          "v": "/product/console/package/acl/service",
+          "m": "get",
+          "group": "Product"
+        },
+        {
+          "l": "Get the ACL of a specific api in the product package",
+          "v": "/product/console/package/acl/api",
+          "m": "get",
+          "group": "Product"
+        },
+        {
+          "l": "Get the ACL of a specific service in the product scope",
+          "v": "/product/console/acl/scope/service",
+          "m": "get",
+          "group": "Product"
+        },
+        {
+          "l": "Get the ACL of a specific api in the product scope",
+          "v": "/product/console/acl/scope/api",
+          "m": "get",
+          "group": "Product"
         },
         {
           "l": "List tenants",
@@ -114,20 +239,27 @@
           "group": "Tenant"
         },
         {
+          "l": "List console tenants",
+          "v": "/tenants/console",
+          "m": "get",
+          "group": "Console tenant",
+          "groupMain": true
+        },
+        {
           "l": "Get tenant",
           "v": "/tenant",
           "m": "get",
           "group": "Tenant"
         },
         {
-          "l": "Get tenant",
+          "l": "Get admin tenant",
           "v": "/admin/tenant",
           "m": "get",
           "group": "Admin Tenant"
         },
         {
-          "l": "Get Console tenant",
-          "v": "/console/tenant",
+          "l": "Get console tenant",
+          "v": "/tenant/console",
           "m": "get",
           "group": "Console Tenant"
         },
@@ -136,6 +268,12 @@
           "v": "/tenant/application",
           "m": "get",
           "group": "Tenant"
+        },
+        {
+          "l": "Get console tenant application",
+          "v": "/tenant/console/application",
+          "m": "get",
+          "group": "Console tenant"
         },
         {
           "l": "Get tenant application",
@@ -150,10 +288,34 @@
           "group": "Tenant"
         },
         {
+          "l": "List console tenant applications",
+          "v": "/tenant/console/applications",
+          "m": "get",
+          "group": "Console tenant"
+        },
+        {
           "l": "List tenant applications",
           "v": "/admin/tenant/applications",
           "m": "get",
           "group": "Admin Tenant"
+        },
+        {
+          "l": "List tenant application keys",
+          "v": "/tenant/application/key",
+          "m": "get",
+          "group": "Tenant"
+        },
+        {
+          "l": "List console tenant application keys",
+          "v": "/tenant/console/application/key",
+          "m": "get",
+          "group": "Console tenant"
+        },
+        {
+          "l": "List tenant application keys",
+          "v": "/admin/tenant/application/key",
+          "m": "get",
+          "group": "Tenant"
         },
         {
           "l": "List tenant application ext keys",
@@ -162,10 +324,34 @@
           "group": "Tenant"
         },
         {
+          "l": "List console tenant application ext keys",
+          "v": "/tenant/console/application/key/ext",
+          "m": "get",
+          "group": "Console Tenant"
+        },
+        {
           "l": "List tenant application ext keys",
           "v": "/admin/tenant/application/key/ext",
           "m": "get",
           "group": "Admin Tenant"
+        },
+        {
+          "l": "List tenant application key configuration",
+          "v": "/tenant/application/key/config",
+          "m": "get",
+          "group": "Tenant"
+        },
+        {
+          "l": "List tenant application key configuration",
+          "v": "/tenant/console/application/key/config",
+          "m": "get",
+          "group": "Tenant Application"
+        },
+        {
+          "l": "List tenant application key configuration",
+          "v": "/admin/tenant/application/key/config",
+          "m": "get",
+          "group": "Tenant"
         },
         {
           "l": "Add product",
@@ -175,16 +361,35 @@
           "groupMain": true
         },
         {
-          "l": "Add package to product",
+          "l": "Add console product",
+          "v": "/product/console",
+          "m": "post",
+          "group": "Console product",
+          "groupMain": true
+        },
+        {
+          "l": "Add a package to product",
           "v": "/product/package",
           "m": "post",
           "group": "Product"
+        },
+        {
+          "l": "Add a package to console product",
+          "v": "/product/console/package",
+          "m": "post",
+          "group": "Console product"
         },
         {
           "l": "Add tenant with optional application, key, and ext key",
           "v": "/tenant",
           "m": "post",
           "group": "Tenant"
+        },
+        {
+          "l": "Add console tenant with optional application, key, and ext key",
+          "v": "/tenant/console",
+          "m": "post",
+          "group": "Console tenant"
         },
         {
           "l": "Add application to tenant with optional key and ext key",
@@ -199,6 +404,12 @@
           "group": "Admin Tenant"
         },
         {
+          "l": "Add application to console tenant with optional key and ext key",
+          "v": "/tenant/console/application",
+          "m": "post",
+          "group": "Console tenant"
+        },
+        {
           "l": "Add key to a tenant application with optional ext key",
           "v": "/tenant/application/key",
           "m": "post",
@@ -211,16 +422,28 @@
           "group": "Admin Tenant"
         },
         {
+          "l": "Add key to a console tenant application with optional ext key",
+          "v": "/tenant/console/application/key",
+          "m": "post",
+          "group": "Console tenant"
+        },
+        {
           "l": "Add external key to tenant application",
           "v": "/tenant/application/key/ext",
           "m": "post",
-          "group": "Tenant Access"
+          "group": "Tenant"
         },
         {
           "l": "Add external key to tenant application",
           "v": "/admin/tenant/application/key/ext",
           "m": "post",
           "group": "Admin Tenant"
+        },
+        {
+          "l": "Add console external key to tenant application",
+          "v": "/tenant/console/application/key/ext",
+          "m": "post",
+          "group": "Console tenant"
         },
         {
           "l": "Delete product",
@@ -236,7 +459,20 @@
           "group": "Product"
         },
         {
-          "l": "Delete Tenant",
+          "l": "Delete console product",
+          "v": "/product/console",
+          "m": "delete",
+          "group": "Console product",
+          "groupMain": true
+        },
+        {
+          "l": "Delete console product package",
+          "v": "/product/console/package",
+          "m": "delete",
+          "group": " Console product"
+        },
+        {
+          "l": "Delete tenant",
           "v": "/tenant",
           "m": "delete",
           "group": "Tenant"
@@ -260,7 +496,31 @@
           "group": "Tenant Access"
         },
         {
-          "l": "Purge ACL for a Product and all its packages",
+          "l": "Delete console tenant",
+          "v": "/tenant/console",
+          "m": "delete",
+          "group": "Console tenant"
+        },
+        {
+          "l": "Delete console tenant application",
+          "v": "/tenant/console/application",
+          "m": "delete",
+          "group": "Console tenant"
+        },
+        {
+          "l": "Delete console tenant application key",
+          "v": "/tenant/console/application/key",
+          "m": "delete",
+          "group": "Console tenant"
+        },
+        {
+          "l": "Delete console tenant application external key",
+          "v": "/tenant/console/application/key/ext",
+          "m": "delete",
+          "group": "Console tenant"
+        },
+        {
+          "l": "Purge ACL for a product and all its packages",
           "v": "/product/purge",
           "m": "put",
           "group": "Product"
@@ -272,10 +532,22 @@
           "group": "Product"
         },
         {
+          "l": "Update console product",
+          "v": "/product/console",
+          "m": "put",
+          "group": "Console product"
+        },
+        {
           "l": "Update product ACL scope",
           "v": "/product/scope",
           "m": "put",
           "group": "Product"
+        },
+        {
+          "l": "Update console product ACL scope",
+          "v": "/product/console/scope",
+          "m": "put",
+          "group": "Console product"
         },
         {
           "l": "Update product ACL scope by env",
@@ -284,14 +556,80 @@
           "group": "Product"
         },
         {
+          "l": "Update console product ACL scope by env",
+          "v": "/product/console/scope/env",
+          "m": "put",
+          "group": "Console product"
+        },
+        {
           "l": "Update product package",
           "v": "/product/package",
           "m": "put",
           "group": "Product"
         },
         {
-          "l": "Update product package",
+          "l": "Update console product package",
+          "v": "/product/console/package",
+          "m": "put",
+          "group": "Console product"
+        },
+        {
+          "l": "Update product package ACL by env",
           "v": "/product/package/acl/env",
+          "m": "put",
+          "group": "Product"
+        },
+        {
+          "l": "Update console product package",
+          "v": "/product/console/package/acl/env",
+          "m": "put",
+          "group": "Console product"
+        },
+        {
+          "l": "Update the ACL of a specific service in the product package",
+          "v": "/product/package/acl/service",
+          "m": "put",
+          "group": "Product"
+        },
+        {
+          "l": "Update the ACL of a specific api in the product package",
+          "v": "/product/package/acl/api",
+          "m": "put",
+          "group": "Product"
+        },
+        {
+          "l": "Update the ACL of a specific service in the product scope",
+          "v": "/product/acl/scope/service",
+          "m": "put",
+          "group": "Product"
+        },
+        {
+          "l": "Update the ACL of a specific api in the product scope",
+          "v": "/product/acl/scope/api",
+          "m": "put",
+          "group": "Product"
+        },
+        {
+          "l": "Update the ACL of a specific service in the product package",
+          "v": "/product/console/package/acl/service",
+          "m": "put",
+          "group": "Product"
+        },
+        {
+          "l": "Update the ACL of a specific api in the product package",
+          "v": "/product/console/package/acl/api",
+          "m": "put",
+          "group": "Product"
+        },
+        {
+          "l": "Update the ACL of a specific service in the product scope",
+          "v": "/product/console/acl/scope/service",
+          "m": "put",
+          "group": "Product"
+        },
+        {
+          "l": "Update the ACL of a specific api in the product scope",
+          "v": "/product/console/acl/scope/api",
           "m": "put",
           "group": "Product"
         },
@@ -302,16 +640,28 @@
           "group": "Tenant"
         },
         {
+          "l": "Update console tenant",
+          "v": "/tenant/console",
+          "m": "put",
+          "group": "Console tenant"
+        },
+        {
           "l": "Update tenant",
           "v": "/admin/tenant",
           "m": "put",
           "group": "Admin Tenant"
         },
         {
-          "l": "Update profile",
+          "l": "Update tenant profile",
           "v": "/tenant/profile",
           "m": "put",
           "group": "Tenant"
+        },
+        {
+          "l": "Update tenant profile",
+          "v": "/tenant/console/profile",
+          "m": "put",
+          "group": "Console Tenant"
         },
         {
           "l": "Update profile",
@@ -326,6 +676,12 @@
           "group": "Tenant"
         },
         {
+          "l": "Update console tenant application",
+          "v": "/tenant/console/application",
+          "m": "put",
+          "group": "Console tenant"
+        },
+        {
           "l": "Update tenant application",
           "v": "/admin/tenant/application",
           "m": "put",
@@ -336,6 +692,12 @@
           "v": "/tenant/application/key",
           "m": "put",
           "group": "Tenant"
+        },
+        {
+          "l": "Update key information for a console tenant application",
+          "v": "/tenant/console/application/key",
+          "m": "put",
+          "group": "Console tenant"
         },
         {
           "l": "Update key information for a tenant application",
@@ -350,10 +712,52 @@
           "group": "Tenant Access"
         },
         {
+          "l": "Update external key information for a console tenant application",
+          "v": "/tenant/console/application/key/ext",
+          "m": "put",
+          "group": "Console tenant"
+        },
+        {
           "l": "Update external key information for a tenant application",
           "v": "/admin/tenant/application/key/ext",
           "m": "put",
           "group": "Admin Tenant"
+        },
+        {
+          "l": "Update tenant application key configuration",
+          "v": "/tenant/application/key/config",
+          "m": "put",
+          "group": "Tenant Application"
+        },
+        {
+          "l": "Update console tenant application key configuration",
+          "v": "/tenant/console/application/key/config",
+          "m": "put",
+          "group": "Console tenant"
+        },
+        {
+          "l": "Update tenant application key configuration",
+          "v": "/admin/tenant/application/key/config",
+          "m": "put",
+          "group": "Admin Tenant"
+        },
+        {
+          "l": "Update tenant oauth configuration",
+          "v": "/tenant/oauth",
+          "m": "put",
+          "group": "Tenant"
+        },
+        {
+          "l": "Update console tenant oauth configuration",
+          "v": "/tenant/console/oauth",
+          "m": "put",
+          "group": "Console tenant"
+        },
+        {
+          "l": "Update tenant oauth configuration",
+          "v": "/admin/tenant/oauth",
+          "m": "put",
+          "group": "Admin tenant"
         }
       ]
     }
