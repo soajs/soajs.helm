@@ -9,7 +9,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: "{{ .Values.settings.label }}-service"
+  name: "{{ .Values.settings.label }}-v{{ .Values.settings.version }}-service"
   namespace: "{{ .Values.global.namespace }}"
   labels:
     service.image.ts: "{{ .Values.global.TS }}"
@@ -17,20 +17,23 @@ metadata:
     soajs.catalog.v: "1"
     soajs.content: "true"
     soajs.env.code: "dashboard"
-    soajs.resource.id: "{{ .Values.settings.resourceId }}"
     soajs.service.group: "{{ .Values.settings.item.group }}"
-    soajs.service.label: "{{ .Values.settings.label }}"
-    soajs.service.mode: "deployment"
+    soajs.service.label: "{{ .Values.settings.label }}-v{{ .Values.settings.version }}"
+    soajs.service.mode: "daemonset"
     soajs.service.name: "{{ .Values.settings.item.name }}"
-    soajs.service.subtype: "mongo"
-    soajs.service.type: "cluster"
+    soajs.service.subtype: "soajs"
+    soajs.service.type: "statis"
     soajs.service.version: "{{ .Values.settings.version }}"
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
-  - port: 27017
-    targetPort: 27017
-    protocol: TCP
-    name: mongo
+  - port: 80
+    targetPort: 80
+    nodePort: {{ .Values.global.soajsNginxHttpPort }}
+    name: http
+  - port: 443
+    targetPort: 443
+    nodePort: {{ .Values.global.soajsNginxHttpsPort }}
+    name: https
   selector:
-    soajs.service.label: "{{ .Values.settings.label }}"
+    soajs.service.label: "{{ .Values.settings.label }}-v{{ .Values.settings.version }}"

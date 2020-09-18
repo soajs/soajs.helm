@@ -20,6 +20,10 @@ To install soajs mongo
 ```bash
  helm install -name soajs-mongo --namespace soajs ./soajs-mongo/ -f ./values.yaml
 ```
+To install soajs mongo bridge, if you want to access the DB from the external
+```bash
+ helm install -name soajs-mongo-bridge --namespace soajs ./soajs-mongo-bridge/ -f ./values.yaml
+```
 To install soajs gateway, you  must wait for soajsdata to be ready 
 ```bash
  helm install -name soajs-controller --namespace soajs ./soajs-controller/ -f ./values.yaml
@@ -27,6 +31,8 @@ To install soajs gateway, you  must wait for soajsdata to be ready
 To install soajs ui, you  must wait for gateway to be ready
 ```bash
  helm install -name soajs-ui --namespace soajs ./soajs-ui/ -f ./values.yaml
+#or this for ssl, before running this you need to copy (tls.crt, tls.key) into soajs-ui-ssl/resources
+ helm install -name soajs-ui --namespace soajs ./soajs-ui-ssl/ -f ./values.yaml
 ```
 To install soajs oauth, you  must wait for gateway to be ready 
 ```bash

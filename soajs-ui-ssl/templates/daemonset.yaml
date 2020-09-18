@@ -1,0 +1,107 @@
+#-------------------------------------------------------------------------------
+# @license
+# Copyright SOAJS All Rights Reserved.
+#
+# Use of this source code is governed by an Apache license that can be
+# found in the LICENSE file at the root of this repository
+#-------------------------------------------------------------------------------
+
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: "{{ .Values.settings.label }}-v{{ .Values.settings.version }}"
+  namespace: "{{ .Values.global.namespace }}"
+  labels:
+    service.image.ts: "{{ .Values.global.TS }}"
+    soajs.catalog.id: "{{ .Values.settings.catalogId }}"
+    soajs.catalog.v: "1"
+    soajs.content: "true"
+    soajs.env.code: "dashboard"
+    soajs.service.group: "{{ .Values.settings.item.group }}"
+    soajs.service.label: "{{ .Values.settings.label }}-v{{ .Values.settings.version }}"
+    soajs.service.mode: "daemonset"
+    soajs.service.name: "{{ .Values.settings.item.name }}"
+    soajs.service.subtype: "soajs"
+    soajs.service.type: "statis"
+    soajs.service.version: "{{ .Values.settings.version }}"
+spec:
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+       soajs.service.label: "{{ .Values.settings.label }}-v{{ .Values.settings.version }}"
+  template:
+    metadata:
+      labels:
+        service.image.ts: "{{ .Values.global.TS }}"
+        soajs.catalog.id: "{{ .Values.settings.catalogId }}"
+        soajs.catalog.v: "1"
+        soajs.content: "true"
+        soajs.env.code: "dashboard"
+        soajs.service.group: "{{ .Values.settings.item.group }}"
+        soajs.service.label: "{{ .Values.settings.label }}-v{{ .Values.settings.version }}"
+        soajs.service.mode: "daemonset"
+        soajs.service.name: "{{ .Values.settings.item.name }}"
+        soajs.service.subtype: "soajs"
+        soajs.service.type: "statis"
+        soajs.service.version: "{{ .Values.settings.version }}"
+    spec:
+      containers:
+      - image: "{{ .Values.settings.image }}:{{ .Chart.AppVersion }}"
+        imagePullPolicy: IfNotPresent
+        name: soajs-{{ .Values.settings.item.name }}-container
+        workingDir: /opt/soajs/soajs.deployer/deployer/
+        command:
+        - bash
+        args:
+        - -c
+        - "node index.js -T nginx -S install && /opt/soajs/soajs.deployer/deployer/bin/nginx.sh"
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
+        ports:
+        - containerPort: 80
+          name: http
+        - containerPort: 443
+          name: https
+        env:
+        - name: SOAJS_ENV
+          value: dashboard
+        - name: SOAJS_EXTKEY
+          value: "{{ .Values.global.soajsConfig.tenantExternalKey }}"
+        - name: SOAJS_NX_DOMAIN
+          value: "{{ .Values.global.soajsConfig.domain }}"
+        - name: SOAJS_NX_API_DOMAIN
+          value: "{{ .Values.global.soajsConfig.apiPrefix }}.{{ .Values.global.soajsConfig.domain }}"
+        - name: SOAJS_NX_SITE_DOMAIN
+          value: "{{ .Values.global.soajsConfig.sitePrefix }}.{{ .Values.global.soajsConfig.domain }}"
+        - name: SOAJS_NX_CONTROLLER_PORT
+          value: "4000"
+        - name: SOAJS_NX_CONTROLLER_IP
+          value: "{{ .Values.global.soajsController }}-service"
+        - name: SOAJS_SSL_CONFIG
+          value: "{\"email\": \"{{ .Values.global.soajsConfig.user.email }}\",\"redirect\": \"false\"}"
+        - name: SOAJS_SSL_SECRET
+          value: "true"
+        volumeMounts:
+        - mountPath: /opt/soajs/certificates/secret/private_key/
+          name: private-key
+        - mountPath: /opt/soajs/certificates/secret/fullchain_crt/
+          name: fullchain-crt
+        readinessProbe:
+          httpGet:
+            path: /
+            port: http
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 2
+          failureThreshold: 3
+      volumes:
+      - name: private-key
+        secret:
+          defaultMode: 420
+          secretName: private-key
+      - name: fullchain-crt
+        secret:
+          defaultMode: 420
+          secretName: fullchain-crt

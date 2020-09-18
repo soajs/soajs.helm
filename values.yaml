@@ -9,8 +9,8 @@
 global:
   soajsConfig:
     domain: "soajs.io"
-    apiPrefix: "dashboard-api"
-    sitePrefix: "dashboard"
+    apiPrefix: "cloud-api"
+    sitePrefix: "cloud"
     kubernetes:
       ipAddr: "kubernetes.docker.internal"
       port: 6443
@@ -21,7 +21,7 @@ global:
       hashedPassword: "$2a$10$S7hAJn1aJC6iYucgZgFY7.zs3gt5kzYRy1Favyld/Sj70yFMZPi2G"
       email: "antoine@soajs.org"
 
-# Do not change the below unless you know what you are doing
+  # Do not change the below unless you know what you are doing
     mongo:
       servers:
       - host: "dashboard-soajsdata-service"

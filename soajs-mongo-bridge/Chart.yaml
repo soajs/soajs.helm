@@ -1,0 +1,13 @@
+#-------------------------------------------------------------------------------
+# @license
+# Copyright SOAJS All Rights Reserved.
+#
+# Use of this source code is governed by an Apache license that can be
+# found in the LICENSE file at the root of this repository
+#-------------------------------------------------------------------------------
+
+apiVersion: v1
+name: soajs-mongo-bridge
+version: 1.0.0
+appVersion: 1.0.0
+description: Helm chart to deploy SOAJS mongo bridge
