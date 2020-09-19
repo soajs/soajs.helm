@@ -25,15 +25,13 @@ metadata:
     soajs.service.type: "statis"
     soajs.service.version: "{{ .Values.settings.version }}"
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
   - port: 80
     targetPort: 80
-    nodePort: {{ .Values.global.soajsNginxHttpPort }}
     name: http
   - port: 443
     targetPort: 443
-    nodePort: {{ .Values.global.soajsNginxHttpsPort }}
     name: https
   selector:
     soajs.service.label: "{{ .Values.settings.label }}-v{{ .Values.settings.version }}"
