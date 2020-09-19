@@ -28,9 +28,11 @@ global:
         port: 27017
       URLParam:
         useUnifiedTopology: true
+
     tenantExternalKey: "fe20ded5fdb8502b06f6a85dd1ba9f6cad33b705e3765aece1521c284fe72674078bd0072ed6c9eda15c52f4fba0f59b27c58d86dda431724bb1548fbd0a22a28c7cac330992dfd9e198a736ab479a24c4050f2b778007c9ab95ae41b0da3f6a"
     tenantInternalKey: "a139786a6e6d18e48b4987e83789430b"
     keyPassword: "5cef8f4a-a66f-11ea-b652-5fd9e891d604"
+
   soajsNginxHttpPort: 30080
   soajsNginxHttpsPort: 30443
   soajsDataExternalPort: 31017
