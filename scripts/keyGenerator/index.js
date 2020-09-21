@@ -8,12 +8,12 @@
  * found in the LICENSE file at the root of this repository
  */
 
-
 const keyPassword = "5cef8f4a-a66f-11ea-b652-5fd9e891d604";
 
 
 // Do not change the below
 
+process.env.SOAJS_SOLO = true;
 const soajs = require('soajs');
 const core = soajs.core;
 
@@ -31,9 +31,9 @@ let config = {
 };
 
 core.key.generateInternalKey((err, uId) => {
-	console.log(uId, 'internal Key');
+	console.log('internal Key:', uId);
 	
 	core.key.generateExternalKey(uId, tenant, application, config, (err, extKey) => {
-		console.log(extKey, 'external Key');
+		console.log('external Key:', extKey);
 	});
 });

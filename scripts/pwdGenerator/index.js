@@ -14,6 +14,7 @@ const password = "password";
 
 // Do not change the below
 
+process.env.SOAJS_SOLO = true;
 const soajsCore = require('soajs');
 const Hasher = soajsCore.hasher;
 const crypto = require("crypto");
