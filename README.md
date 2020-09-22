@@ -23,6 +23,8 @@ To install soajs mongo
 To install soajs mongo bridge, if you want to access the DB from the external
 ```bash
  helm install -name soajs-mongo-bridge --namespace soajs ./soajs-mongo-bridge/ -f ./values.yaml
+#or
+ helm install -name soajs-mongo-bridge --namespace soajs ./soajs-mongo-bridge-lb/ -f ./values.yaml
 ```
 To install soajs gateway, you  must wait for soajsdata to be ready 
 ```bash
