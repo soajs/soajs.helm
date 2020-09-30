@@ -14,3 +14,8 @@ To create a service for soajs mongodb in another namespace, you must change the 
 ```bash
 kubectl apply -f mongodb.yaml
 ```
+
+To create the need permission if needed
+```bash
+kubectl apply -f rbac.yaml
+```
