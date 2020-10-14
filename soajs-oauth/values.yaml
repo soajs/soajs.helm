@@ -9,10 +9,10 @@
 resources:
   requests:
     cpu: 100m
-    memory: 256Mi
+    memory: 128Mi
   limits:
-    cpu: 500m
-    memory: 512Mi
+    cpu: 250m
+    memory: 256Mi
 settings:
   image: soajsorg/oauth
   label: dashboard-oauth
