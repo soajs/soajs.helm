@@ -6,8 +6,4 @@
 # found in the LICENSE file at the root of this repository
 #-------------------------------------------------------------------------------
 
-apiVersion: v1
-name: soajs-infra
-version: 1.0.0
-appVersion: 1.0.14
-description: Helm chart to deploy SOAJS infra
+
