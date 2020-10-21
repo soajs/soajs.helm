@@ -15,6 +15,7 @@ Use of this source code is governed by an Apache license that can be found in th
 To install soajs data
 ```bash
  helm install -name soajs-data --namespace soajs ./soajs-data/ -f ./values.yaml
+ helm install -name soajs-data-claim --namespace soajs ./soajs-data-claim/ -f ./values.yaml
 ```
 To install soajs mongo
 ```bash
