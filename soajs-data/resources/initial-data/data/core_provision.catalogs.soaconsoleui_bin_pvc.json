@@ -6,7 +6,6 @@
   "type": "soajs",
   "subtype": "addon",
   "description": "Deploy SOAJS Enterprise console UI from binary with automated https certificate. This requires a ReadWriteMany pvc with claim name as nfs-pvc",
-  "locked": true,
   "recipe": {
     "deployOptions": {
       "image": {
@@ -81,37 +80,25 @@
           "type": "computed",
           "value": "$SOAJS_ENV"
         },
-
         "SOAJS_EXTKEY": {
           "type": "computed",
           "value": "$SOAJS_EXTKEY"
         },
-
-        "SOAJS_NX_DOMAIN": {
-          "type": "computed",
-          "value": "$SOAJS_NX_DOMAIN"
-        },
-        "SOAJS_NX_API_DOMAIN": {
-          "type": "computed",
-          "value": "$SOAJS_NX_API_DOMAIN"
-        },
         "SOAJS_NX_SITE_DOMAIN": {
           "type": "computed",
           "value": "$SOAJS_NX_SITE_DOMAIN"
-        },
-        "SOAJS_NX_CONTROLLER_IP": {
-          "type": "computed",
-          "value": "$SOAJS_NX_CONTROLLER_IP"
-        },
-        "SOAJS_NX_CONTROLLER_PORT": {
-          "type": "computed",
-          "value": "$SOAJS_NX_CONTROLLER_PORT"
         },
         "SOAJS_SSL_CONFIG": {
           "type": "userInput",
           "label": "SSL information",
           "default": '{"email":"me@email.com" ,"redirect":"false"}',
           "fieldMsg": "Add the SSL certificate email owner and set if you want to redirect http to https"
+        },
+        "SOAJS_NX_API_DOMAIN_PREFIX": {
+          "type": "userInput",
+          "label": "API Domain Prefix",
+          "default": "dashboard-api",
+          "fieldMsg": "The APi domain prefix, as set under registry"
         }
       },
       "settings": {},
