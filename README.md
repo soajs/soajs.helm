@@ -71,9 +71,5 @@ To install soajs console, you  must wait for gateway to be ready
 ```bash
  helm install -name soajs-console --namespace soajs ./soajs-console/ -f ./values.yaml
 ```
-To install soajs dashboard, you  must wait for gateway to be ready  
-```bash
- helm install -name soajs-dashboard --namespace soajs ./soajs-dashboard/ -f ./values.yaml
-```
 
 
