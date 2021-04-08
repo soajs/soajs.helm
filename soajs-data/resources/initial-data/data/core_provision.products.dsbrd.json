@@ -682,7 +682,7 @@
               "apisPermission": "restricted",
               "post": {
                 "apis": {
-                  "/item/recipe": {
+                  "/recipe": {
                     "access": true
                   }
                 }
@@ -701,7 +701,7 @@
                   "/item/deploy/redeploy": {
                     "access": true
                   },
-                  "/item/recipe": {
+                  "/recipe": {
                     "access": true
                   },
                   "/item/acl": {
@@ -720,6 +720,9 @@
                     "access": true
                   },
                   "/soajs/item/recipes": {
+                    "access": true
+                  },
+                  "/item/maintenance": {
                     "access": true
                   }
                 }
@@ -750,9 +753,6 @@
                   },
                   "/item/type": {
                     "access": true
-                  },
-                  "/item/maintenance": {
-                    "access": true
                   }
                 }
               }
@@ -776,11 +776,22 @@
                   "/manual/awareness": {
                     "access": true
                   },
-                  "/kubernetes/workloads/:mode": {"access": true},
-                  "/kubernetes/clusters/:mode": {"access": true},
-                  "/kubernetes/configurations/:mode": {"access": true},
-                  "/kubernetes/services/:mode": {"access": true},
+                  "/kubernetes/workloads/:mode": {
+                    "access": true
+                  },
+                  "/kubernetes/clusters/:mode": {
+                    "access": true
+                  },
+                  "/kubernetes/configurations/:mode": {
+                    "access": true
+                  },
+                  "/kubernetes/services/:mode": {
+                    "access": true
+                  },
                   "/kubernetes/pod/log": {
+                    "access": true
+                  },
+                  "/kubernetes/item/inspect": {
                     "access": true
                   }
                 }
@@ -803,6 +814,9 @@
                     "access": true
                   },
                   "/account/kubernetes": {
+                    "access": true
+                  },
+                  "/cd/token": {
                     "access": true
                   }
                 }
@@ -855,7 +869,9 @@
                   "/account/kubernetes/acl": {
                     "access": true
                   },
-                  "/kubernetes/pods": {"access": true}
+                  "/kubernetes/pods": {
+                    "access": true
+                  }
                 }
               }
             }
@@ -909,7 +925,7 @@
                   "/product/console/package": {
                     "access": true
                   },
-                  "/tenant/application/key": {
+                  "/admin/tenant/application/key": {
                     "access": true
                   },
                   "/tenant": {
