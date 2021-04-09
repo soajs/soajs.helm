@@ -557,6 +557,9 @@
               },
               "get": {
                 "apis": {
+                  "/api/acl/usage/tenants": {
+                    "access": true
+                  },
                   "/api/acl/usage": {
                     "access": true
                   },
