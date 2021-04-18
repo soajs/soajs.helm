@@ -5,10 +5,10 @@
   "shared": false,
   "value": {
     "link": {
-      "addUser": "https://{{ .Values.global.soajsConfig.sitePrefix }}.{{ .Values.global.soajsConfig.domain }}/#/setNewPassword",
-      "changeEmail": "https://{{ .Values.global.soajsConfig.sitePrefix }}.{{ .Values.global.soajsConfig.domain }}/#/changeEmail/validate",
-      "forgotPassword": "https://{{ .Values.global.soajsConfig.sitePrefix }}.{{ .Values.global.soajsConfig.domain }}/#/resetPassword",
-      "join": "https://{{ .Values.global.soajsConfig.sitePrefix }}.{{ .Values.global.soajsConfig.domain }}/#/join/validate"
+      "addUser": "https://{{ .Values.global.soajsConfig.sitePrefix }}.{{ .Values.global.soajsConfig.domain }}/reset-password",
+      "changeEmail": "https://{{ .Values.global.soajsConfig.sitePrefix }}.{{ .Values.global.soajsConfig.domain }}/validate-change-email",
+      "forgotPassword": "https://{{ .Values.global.soajsConfig.sitePrefix }}.{{ .Values.global.soajsConfig.domain }}/reset-password",
+      "join": "https://{{ .Values.global.soajsConfig.sitePrefix }}.{{ .Values.global.soajsConfig.domain }}/validate-signup"
     },
     "mail": {
       "join": {
