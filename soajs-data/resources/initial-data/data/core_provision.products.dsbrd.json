@@ -124,7 +124,11 @@
               "access": true,
               "apisPermission": "restricted",
               "put": {
-                "apis": {}
+                "apis": {
+                  "/item/maintenance": {
+                    "access": true
+                  }
+                }
               },
               "get": {
                 "apis": {
@@ -141,9 +145,6 @@
                     "access": true
                   },
                   "/item/type": {
-                    "access": true
-                  },
-                  "/item/maintenance": {
                     "access": true
                   }
                 }
@@ -914,6 +915,15 @@
                   },
                   "/admin/tenant/application": {
                     "access": true
+                  },
+                  "/tenant/console/application/key/config": {
+                    "access": true
+                  },
+                  "/tenant/console/application": {
+                    "access": true
+                  },
+                  "/tenant/console/application/key/ext": {
+                    "access": true
                   }
                 }
               },
@@ -938,6 +948,15 @@
                     "access": true
                   },
                   "/admin/tenant/application/key/ext": {
+                    "access": true
+                  },
+                  "/tenant/console/application": {
+                    "access": true
+                  },
+                  "/tenant/console/application/key": {
+                    "access": true
+                  },
+                  "/tenant/console/application/key/ext": {
                     "access": true
                   }
                 }
@@ -964,6 +983,15 @@
                   },
                   "/tenant/application/key/ext": {
                     "access": true
+                  },
+                  "/tenant/console/application": {
+                    "access": true
+                  },
+                  "/tenant/console/application/key": {
+                    "access": true
+                  },
+                  "/tenant/console/application/key/ext": {
+                    "access": true
                   }
                 }
               },
@@ -982,6 +1010,12 @@
                     "access": true
                   },
                   "/tenant/tenants": {
+                    "access": true
+                  },
+                  "/tenants/console": {
+                    "access": true
+                  },
+                  "/products/console": {
                     "access": true
                   }
                 }
