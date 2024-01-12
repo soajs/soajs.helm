@@ -68,11 +68,14 @@ spec:
         readinessProbe:
           exec:
             command:
-            - mongo
+            - mongosh
+            - core_provision
+            - --eval 
+            - 'db.listCollections'
           initialDelaySeconds: 5
           periodSeconds: 5
           successThreshold: 1
-          timeoutSeconds: 2
+          timeoutSeconds: 5
           failureThreshold: 3
       volumes:
       - name: dashboard-soajsdata
